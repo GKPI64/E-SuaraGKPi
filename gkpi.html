@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Suara GKPI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .bookshelf {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .book {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .book:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .book img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .book h3 {
+            margin: 15px 0 10px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .book p {
+            color: #777;
+            font-size: 0.9em;
+            margin: 0;
+        }
+        .btn-primary {
+            background: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        .footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>E-Suara GKPI</h1>
+        </div>
+    </header>
+
+    <!-- Bookshelf Section -->
+    <section class="bookshelf-section">
+        <div class="container">
+            <div class="bookshelf" id="bookshelf">
+                <!-- Buku 1 -->
+                <div class="book" data-aos="fade-up">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOhJf-UuVJ57r5oE9exy4sqHPveQlw5FGdRAweMbAQcwBDt9ogIJnE86qgVamM8lJBrf7H1LE_IZmf4gcZCw3EQBXORJDb5AefAfXqqzdPGnJIc_gm0dp72QDZmvHDlvOSfPsZ9pI5QeDtezBB_CRHG=w1080-h1080-s-no-gm?authuser=0" alt="Book 1">
+                    <h3>Januari</h3>
+                    <p>Author: Infokom GKPI</p>
+                    <a href="kosong.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 2 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPQV52N8pTs6URG8UWRET8eyeSFxvmvud7iY1inNycjRlh8AeFppaptyXDWTLE2ds_Foov2_mlUIiiR7AOCaYN9rBdjnnJqLpSACwdbTvtJvvy7ZxjnXiJAxEXzRddh7Gg8fv50ko8oBv3FEkkEYFlh=w464-h618-s-no-gm?authuser=0" alt="Book 2">
+                    <h3>Februari</h3>
+                    <p>Author: Infokom GKPI</p>
+                    <a href="kosong.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 3 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPRFFEPUIWt0k9g26ZRF64DTtgwlRWNLWA4qPuezOB8xFfOFTD-nM2BZ3BsTd1AOPfuJ1iQJqEpiWIU3pwByNiAWsj_QuB9EfYQRCbQdhjQuxz8M0FB7DRfqqFgfQAg1qMFbazUpBqW6EFsFMx_Py9u=w976-h1302-s-no-gm?authuser=0" alt="Book 3">
+                    <h3>Maret</h3>
+                    <p>Author: Infokom GKPI</p>
+                    <a href="kosong.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 4 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://via.placeholder.com/150" alt="Book 4">
+                    <h3>Book Title 4</h3>
+                    <p>Author: Author 4</p>
+                    <a href="book4.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 5 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://via.placeholder.com/150" alt="Book 5">
+                    <h3>Book Title 5</h3>
+                    <p>Author: Author 5</p>
+                    <a href="book5.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 6 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://via.placeholder.com/150" alt="Book 6">
+                    <h3>Book Title 6</h3>
+                    <p>Author: Author 6</p>
+                    <a href="book6.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 7 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://via.placeholder.com/150" alt="Book 7">
+                    <h3>Book Title 7</h3>
+                    <p>Author: Author 7</p>
+                    <a href="book7.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 8 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="700">
+                    <img src="https://via.placeholder.com/150" alt="Book 8">
+                    <h3>Book Title 8</h3>
+                    <p>Author: Author 8</p>
+                    <a href="book8.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 9 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="800">
+                    <img src="https://via.placeholder.com/150" alt="Book 9">
+                    <h3>Book Title 9</h3>
+                    <p>Author: Author 9</p>
+                    <a href="book9.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 10 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="900">
+                    <img src="https://via.placeholder.com/150" alt="Book 10">
+                    <h3>Book Title 10</h3>
+                    <p>Author: Author 10</p>
+                    <a href="book10.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 11 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="1000">
+                    <img src="https://via.placeholder.com/150" alt="Book 11">
+                    <h3>Book Title 11</h3>
+                    <p>Author: Author 11</p>
+                    <a href="book11.html" class="btn-primary">Read More</a>
+                </div>
+                <!-- Buku 12 -->
+                <div class="book" data-aos="fade-up" data-aos-delay="1100">
+                    <img src="https://via.placeholder.com/150" alt="Book 12">
+                    <h3>Book Title 12</h3>
+                    <p>Author: Author 12</p>
+                    <a href="book12.html" class="btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Aplikasi Buku Profesional. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        $(document).ready(function(){
+            AOS.init();
+        });
+    </script>
+</body>
+</html>
