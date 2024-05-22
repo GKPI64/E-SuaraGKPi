@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rak Buku Interaktif</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .bookshelf {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .category {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 15px;
+            width: 280px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .category h2 {
+            background-color: #007bff;
+            color: white;
+            margin: 0;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category h2 i {
+            margin-right: 10px;
+        }
+
+        .category .content {
+            padding: 20px;
+            color: #333;
+        }
+
+        .category .content p {
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        .category .content p a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .category .content p a:hover {
+            text-decoration: underline;
+        }
+
+        .category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,154,0,1) 50%, rgba(208,0,255,1) 100%);
+        }
+
+        .category .image {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .category .image.artikel {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6mtFher-qPwIDbZnL1sywO2sZmVcxrsKV-iIeC601Xyys051GwoDRPRJN&s=10');
+        }
+
+        .category .image.khotbah {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczN-hE74F78N4NEfr7MT8HgnZAfm9rkwmeoshsDM7cyvtxWEpjjzJE1tMBuGbd-apLRv5N7muurxuEg6GyhPFvptrtKdzf6rREbUIr31UANJrnMe4EDw_hJWkDmfNRI56aOCyCACDmduDkEn9msGnV52=w432-h399-s-no-gm?authuser=0');
+        }
+
+        .category .image.mamre {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOURZoQ_4IyVZeWQZdg2k285RGUZcFbkMQlVpdFpLtwJDVyS_dacB0JhxTstrk8sF3AycXwSOQxwGsgVaJrv6J7u7uARbK6F1WCC2cCTOyBok-xDIYbIhElauBpot3Sp29zcVMiC9Pk5BwTM7wgmS-g=w832-h594-s-no-gm?authuser=0');
+        }
+
+        .category .image.berita-pelayanan {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNG1xjWmZptvtsVWuTNwbpGluuUDbdDA0TyxDBGG_EIAZM1PMGlPGWOQh6tkNdr9iipPy_o0Gf3rf3-aubeHBwQZN9FP7pN9ul7DVVmIgUn9AE_CnQEKq-BXe-QyordB0tNytb8upqPB_DSD0LpZYCM=w790-h616-s-no-gm?authuser=0');
+        }
+
+        .category .image.berita-keuangan {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf4DaXUlNKt57UbzxYtQfozZcdor4kwD2i0wlHgKiBN2h9JZuhpfzMPCY&s=10');
+        }
+
+        .category .image.hut-pendeta {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdhBjbZeyPBkeNWByc6BKQIGf_tAZLpRWQA&usqp=CAU');
+        }
+
+        .category .image.hut-gereja {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUlPq-H-eu7KWO4OcQEdvjMVLI9nkPy5nwi7Z0uAJ8MS9ojVXwoZl7vr5S&s=10');
+        }
+
+        .category .image.berita-sukacita {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUR5WhoRC2EgOefVHAbGUpM2MntBDl0pLzug&usqp=CAU');
+        }
+
+        .category .image.berita-dukacita {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoolSieUzhjZW_yeshZ42Rnvub6TXrKyKrqZ-n-gz2Yso4bBNbryNvXzHd&s=10');
+        }
+
+        .category .image.informasi-lainnya {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOMJwlLiKytG3WBh-lLAKxZhZtNK9BSkdW-rfpq_eehVaIUuq8isJmLHF1CTtU_S9uBmNSazipkTdPFw1at6R7ZgCgW09lhT0lEYXQT6Swn9vQ7x4R_Y59ecww-RsulFg9BjFUNBXQmHx_R5wtW0Rnr=w1080-h847-s-no-gm?authuser=0');
+        }
+
+        @media (max-width: 768px) {
+            .category {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Rak Buku Interaktif</h1>
+    </div>
+    <div class="bookshelf">
+        <div class="category">
+            <div class="image artikel"></div>
+            <h2><i class="fas fa-file-alt"></i>Artikel</h2>
+            <div class="content">
+                <p>Pdt. Segera hadir<a href="#">Baca selengkapnya..</a></p>
+                <p>Artikel 2: <a href="#">Consectetur adipiscing elit...</a></p>
+                <p>Artikel 3: <a href="#">Sed do eiusmod tempor incididunt...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image khotbah"></div>
+            <h2><i class="fas fa-church"></i>Khotbah</h2>
+            <div class="content">
+                <p>Khotbah 1: <a href="#">Ut enim ad minim veniam...</a></p>
+                <p>Khotbah 2: <a href="#">Quis nostrud exercitation...</a></p>
+                <p>Khotbah 3: <a href="#">Duis aute irure dolor in reprehenderit...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image mamre"></div>
+            <h2><i class="fas fa-praying-hands"></i>Mamre</h2>
+            <div class="content">
+                <p>Mamre 1: <a href="#">Excepteur sint occaecat cupidatat...</a></p>
+                <p>Mamre 2: <a href="#">Non proident, sunt in culpa qui...</a></p>
+                <p>Mamre 3: <a href="#">Officia deserunt mollit anim id est laborum...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image berita-pelayanan"></div>
+            <h2><i class="fas fa-hands-helping"></i>Berita Pelayanan</h2>
+            <div class="content">
+                <p>Berita 1: <a href="#">Lorem ipsum dolor sit amet...</a></p>
+                <p>Berita 2: <a href="#">Consectetur adipiscing elit...</a></p>
+                <p>Berita 3: <a href="#">Sed do eiusmod tempor incididunt...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image berita-keuangan"></div>
+            <h2><i class="fas fa-dollar-sign"></i>Berita Keuangan</h2>
+            <div class="content">
+                <p>Keuangan 1: <a href="#">Ut enim ad minim veniam...</a></p>
+                <p>Keuangan 2: <a href="#">Quis nostrud exercitation...</a></p>
+                <p>Keuangan 3: <a href="#">Duis aute irure dolor in reprehenderit...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image hut-pendeta"></div>
+            <h2><i class="fas fa-birthday-cake"></i>HUT Pendeta</h2>
+            <div class="content">
+                <p>HUT 1: <a href="#">Lorem ipsum dolor sit amet...</a></p>
+                <p>HUT 2: <a href="#">Consectetur adipiscing elit...</a></p>
+                <p>HUT 3: <a href="#">Sed do eiusmod tempor incididunt...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image hut-gereja"></div>
+            <h2><i class="fas fa-church"></i>HUT Gereja</h2>
+            <div class="content">
+                <p>HUT 1: <a href="#">Lorem ipsum dolor sit amet...</a></p>
+                <p>HUT 2: <a href="#">Consectetur adipiscing elit...</a></p>
+                <p>HUT 3: <a href="#">Sed do eiusmod tempor incididunt...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image berita-sukacita"></div>
+            <h2><i class="fas fa-smile"></i>Berita Sukacita</h2>
+            <div class="content">
+                <p>Sukacita 1: <a href="#">Lorem ipsum dolor sit amet...</a></p>
+                <p>Sukacita 2: <a href="#">Consectetur adipiscing elit...</a></p>
+                <p>Sukacita 3: <a href="#">Sed do eiusmod tempor incididunt...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image berita-dukacita"></div>
+            <h2><i class="fas fa-sad-tear"></i>Berita Dukacita</h2>
+            <div class="content">
+                <p>Dukacita 1: <a href="#">Lorem ipsum dolor sit amet...</a></p>
+                <p>Dukacita 2: <a href="#">Consectetur adipiscing elit...</a></p>
+                <p>Dukacita 3: <a href="#">Sed do eiusmod tempor incididunt...</a></p>
+            </div>
+        </div>
+        <div class="category">
+            <div class="image informasi-lainnya"></div>
+            <h2><i class="fas fa-info-circle"></i>Informasi Lainnya</h2>
+            <div class="content">
+                <p>Info 1: <a href="#">Lorem ipsum dolor sit amet...</a></p>
+                <p>Info 2: <a href="#">Consectetur adipiscing elit...</a></p>
+                <p>Info 3: <a href="#">Sed do eiusmod tempor incididunt...</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
